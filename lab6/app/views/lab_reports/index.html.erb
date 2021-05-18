@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-lg" style="text-align: center; margin-top: 150px"><h1>Labs reports</h1></div>
+</div>
+<span class="nav-link"><%= link_to "Add report", new_lab_report_path, :class => 'btn btn-danger'%></span>
+
+<% LabReport.all.each do |lab| %>
+    <div class="alert alert-light">
+        <h3><%= lab.title %></h3>
+        <p><%= lab.description %></p>
+        <%= link_to "Читать далее", lab_report_path(lab), :class => 'btn btn-outline-primary'%>
+        <%= link_to "Delete", lab_report_path(lab), method: :delete, data: {confirm: "Delete a report?"}, :class => 'btn btn-danger' %>
+    </div>
+    
+<% end %>
